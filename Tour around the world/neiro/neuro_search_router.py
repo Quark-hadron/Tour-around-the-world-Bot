@@ -41,12 +41,26 @@ async def process_neuro_search(message: types.Message, state: FSMContext):
             else:
                 smile = '⛅'
 
+            rating = round(tour.rating)
+
+            if rating >=0 and rating <=1:
+                rating_smile = '⭐☆☆☆☆'
+            elif rating >=1 and rating <=2:
+                    rating_smile = '⭐⭐☆☆☆'
+            elif rating >=2 and rating <=3:
+                    rating_smile = '⭐⭐⭐☆☆'
+            elif rating >=3 and rating <=4:
+                    rating_smile = '⭐⭐⭐⭐☆'
+            elif rating >=4 and rating <=5:
+                    rating_smile = '⭐⭐⭐⭐⭐'
+
             tour_info = (
                 f"🌟 <b>Нейропоиск нашел:</b>\n\n"
                 f"🌍 {tour.country}, {tour.city}\n"
                 f"📅 {tour.in_date.strftime('%d.%m.%Y')}-{tour.out_date.strftime('%d.%m.%Y')}\n"
                 f"👥 Для {tour.count_people} чел. | {smile} {tour.seasons}\n"
                 f"🏷 Тип: {tour.tour_type}\n"
+                f"✨ Рейтинг: {tour.rating}\t{rating_smile}\n"
                 f"💵 Цена: {tour.price:.2f} руб.\n"
                 f"📝 {tour.description}"
             )

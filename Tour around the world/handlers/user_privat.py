@@ -63,5 +63,3 @@ async def about(message: types.Message):
         marker='♦️ '
     )
     await message.answer(text.as_html())
-
-
